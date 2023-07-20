@@ -46,11 +46,11 @@ else
     #echo "http_code was not null"
 fi
 
-if [[ "$http_code" != "$successful_status_code" && "$http_code" != "400" && "$http_code" != "204" ]]; then
+if [[ "$http_code" != "$successful_status_code" && "$http_code" != "404" && "$http_code" != "204" ]]; then
     echo "http_code was - $http_code"
     echo "something went wrong ... aborting"
     exit 1
-elif [ "$http_code" == "400" ]; then
+elif [ "$http_code" == "404" ]; then
     echo "file not found ... not a problem ... continuing"
 else
     echo "http_code was - $http_code"
