@@ -6,8 +6,9 @@ filename=$2
 qbee_directory=$3
 local_directory=$4
 run=$5
+api_host=$6
 
-echo -e "init token: $token\nfilename: $filename\nqbee_directory: $qbee_directory\nlocal_directory: $local_directory\nrun: $run"
+echo -e "init token: $token\nfilename: $filename\nqbee_directory: $qbee_directory\nlocal_directory: $local_directory\nrun: $run\napi_host: $api_host"
 
 if [ $run != 1 ]; then
     echo "run is set to false: all files up to date - not performing upload"
@@ -27,7 +28,7 @@ local_directory="$(cd $local_directory && pwd)/"
 
 apiOutput=$(curl --request "DELETE" -sL -d "path=$qbee_directory$filename" \
             -H "Content-type: application/x-www-form-urlencoded" \
-            --url 'https://www.app.qbee.io/api/v2/file' \
+            --url "https://$api_host/api/v2/file" \
             --header 'Authorization: Bearer '"$token" \
             -w "\n{\"http_code\":%{http_code}}\n")
 
@@ -57,7 +58,7 @@ fi
 
 apiPostOutput=$(curl --request POST -sL -H "Content-Type:multipart/form-data" \
                -F "path=$qbee_directory" -F "file=@$local_directory$filename" \
-               --url 'https://www.app.qbee.io/api/v2/file'\
+               --url "https://$api_host/api/v2/file" \
                --header 'Authorization: Bearer '"$token"\
                -w "\n{\"http_code\":%{http_code}}\n")
 
