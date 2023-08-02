@@ -26,8 +26,8 @@ local_directory="$(cd $local_directory && pwd)/"
 [[ "${qbee_directory}" != /* ]] && qbee_directory="/${qbee_directory}"
 [[ "${qbee_directory}" != */ ]] && qbee_directory="${qbee_directory}/"
 
-apiOutput=$(curl --request "DELETE" -sL -d "path=$qbee_directory$filename" \
-            -H "Content-type: application/x-www-form-urlencoded" \
+apiOutput=$(curl --request "DELETE" -sL -d "{\"path\":\"$qbee_directory$filename\"}" \
+            -H "Content-type: application/json" \
             --url "https://$api_host/api/v2/file" \
             --header 'Authorization: Bearer '"$token" \
             -w "\n{\"http_code\":%{http_code}}\n")
@@ -56,7 +56,7 @@ else
     echo "http_code was - $http_code"
 fi
 
-apiPostOutput=$(curl --request POST -sL -H "Content-Type:multipart/form-data" \
+apiPostOutput=$(curl --request POST -sL -H "Content-Type: multipart/form-data" \
                -F "path=$qbee_directory" -F "file=@$local_directory$filename" \
                --url "https://$api_host/api/v2/file" \
                --header 'Authorization: Bearer '"$token"\
