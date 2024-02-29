@@ -19,7 +19,7 @@ jobs:
         TARNAME: repo.tar
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: create tarball
       run: |
