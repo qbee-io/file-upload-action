@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.PASSWORD_KEY }}
 
     - name: qbee.io file upload
-      uses: qbee-io/file-upload-action@v1
+      uses: qbee-io/file-upload-action@v1.3
       with:
           token: ${{ steps.qbee-auth.outputs.token }}
           filename: ${{ env.TARNAME }}
