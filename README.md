@@ -19,7 +19,7 @@ jobs:
         TARNAME: repo.tar
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: create tarball
       run: |
@@ -28,14 +28,14 @@ jobs:
 
 
     - name: qbee.io authentication
-      uses: qbee-io/authenticate-action@v1
+      uses: qbee-io/authenticate-action@main
       id: qbee-auth
       with:
           login: ${{ secrets.USERNAME_KEY }}
           password: ${{ secrets.PASSWORD_KEY }}
 
     - name: qbee.io file upload
-      uses: qbee-io/file-upload-action@v1
+      uses: qbee-io/file-upload-action@main
       with:
           token: ${{ steps.qbee-auth.outputs.token }}
           filename: ${{ env.TARNAME }}
@@ -43,12 +43,12 @@ jobs:
           local_directory: 'tar'
 ```
 
-The usage of [qbee-io/authenticate-action](https://github.com/qbee-io/authenticate-action) is explained on its own documentation page.
+The usage of [qbee-io/authenticate-action](https://github.com/qbee-io/authenticate-action) is explained on its documentation page.
 
 # Input variables
 
 * `token`: authentication token obtained from the previous step
 * `filename`: filename to upload **without** path
-* `qbee_directory`: path to directory in the qbee file manager where the file should be uploaded
+* `qbee_directory`: path to the directory in the qbee file manager where the file should be uploaded
 * `local_directory`: path to the local (GitHub) directory in which the file is located - default: ./
 * `run`: set to 0 if the upload action should not be performed (default 1: performing file upload)
