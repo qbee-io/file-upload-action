@@ -1,11 +1,11 @@
 #!/bin/sh
 
 #inputs
-filename=$2
-qbee_directory=$3
-local_directory=$4
-run=$5
-api_host=$6
+filename=$1
+qbee_directory=$2
+local_directory=$3
+run=$4
+api_host=$5
 
 if [[ -n "$api_host" ]]; then
   echo "WARNING: api_host is deprecated, this is handled in the authentication action"

@@ -12,14 +12,6 @@ inputs:
     description: 'path to the local (GitHub) directory in which the file is located - default: ./'
     required: false
     default: './'
-  api_host:
-    description: 'api host to use'
-    required: false
-    default: 'www.app.qbee.io'
-  run:
-    description: 'perform the action or not'
-    required: false
-    default: 1
 runs:
   using: 'docker'
   image: 'Dockerfile'
