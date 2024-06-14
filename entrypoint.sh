@@ -1,8 +1,14 @@
 #!/bin/sh -l
 
-#inputs
-filename=$1
-qbee_directory=$2
-local_directory=$3
+QBEE_FILE_SRC="$INPUT_SOURCE"
+QBEE_FILE_DST="$INPUT_DESTINATION"
 
-qbee-cli files upload --source "$local_directory/$filename" --destination "$qbee_directory" --overwrite
+if [ "x$QBEE_FILE_SRC" = "x" ]; then
+    QBEE_FILE_SRC="$INPUT_LOCAL_DIRECTORY/$INPUT_FILENAME"
+fi
+
+if [ "x$QBEE_FILE_DST" = "x" ]; then
+    QBEE_FILE_DST="$INPUT_QBEE_DIRECTORY"
+fi
+
+qbee-cli files upload --source "$QBEE_FILE_SRC" --destination "$QBEE_FILE_DST" --overwrite

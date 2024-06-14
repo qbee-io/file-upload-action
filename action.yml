@@ -21,7 +21,3 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.filename }}
-    - ${{ inputs.qbee_directory }}
-    - ${{ inputs.local_directory }}
