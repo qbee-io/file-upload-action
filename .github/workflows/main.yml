@@ -29,7 +29,7 @@ jobs:
           
       - name: test file upload
         id: qbee-file-upload
-        uses: qbee-io/file-upload-action@DEV-2144/convert-to-qbee-cli
+        uses: ./
         with:
           filename: README.md
           local_directory: .
