@@ -2,34 +2,22 @@
 name: 'update qbee file manager'
 description: 'delete old file and upload new file into the qbee file manager'
 inputs:
-  token:
-    description: 'jwt token'
-    required: true
   filename:
     description: 'filename without path'
-    required: true
+    required: false
   qbee_directory:
     description: 'path to directory in the qbee file manager where the file should be uploaded'
-    required: true
+    required: false
   local_directory:
     description: 'path to the local (GitHub) directory in which the file is located - default: ./'
     required: false
     default: './'
-  api_host:
-    description: 'api host to use'
+  source:
+    description: 'Local path to file'
     required: false
-    default: 'www.app.qbee.io'
-  run:
-    description: 'perform the action or not'
+  destination:
+    description: 'directory in the qbee filemanager'
     required: false
-    default: 1
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.token }}
-    - ${{ inputs.filename }}
-    - ${{ inputs.qbee_directory }}
-    - ${{ inputs.local_directory }}
-    - ${{ inputs.run }}
-    - ${{ inputs.api_host }}
