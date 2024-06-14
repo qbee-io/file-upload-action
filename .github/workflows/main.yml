@@ -27,10 +27,15 @@ jobs:
           login: ${{ secrets.QBEE_USER }}
           password: ${{ secrets.QBEE_PASSWORD }}
           
-      - name: test file upload
-        id: qbee-file-upload
+      - name: test file upload old format
         uses: ./
         with:
           filename: README.md
           local_directory: .
           qbee_directory: /qbee-github-actions/upload
+
+      - name: test file upload new format
+        uses: ./
+        with:
+          source: README.md
+          destination: /qbee-github-actions/upload
