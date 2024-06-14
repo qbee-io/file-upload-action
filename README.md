@@ -2,7 +2,7 @@
 Upload files to the qbee.io file manager within GitHub runners.
 
 # Usage
-To use this action make sure to use our [authentication action](https://github.com/qbee-io/authenticate-action) before the file upload such that the authorization token can be passed.
+To use this action make sure to use our [authentication action](https://github.com/qbee-io/authenticate-action) before the file upload.
 
 A sample GitHub action file in your repository would look like this
 
@@ -37,18 +37,12 @@ jobs:
     - name: qbee.io file upload
       uses: qbee-io/file-upload-action@main
       with:
-          token: ${{ steps.qbee-auth.outputs.token }}
-          filename: ${{ env.TARNAME }}
-          qbee_directory: 'github_actions_upload'
-          local_directory: 'tar'
+          source: './tar/${{ env.TARNAME }}'
+          destination: 'github_actions_upload'
 ```
 
 The usage of [qbee-io/authenticate-action](https://github.com/qbee-io/authenticate-action) is explained on its documentation page.
 
 # Input variables
-
-* `token`: authentication token obtained from the previous step
-* `filename`: filename to upload **without** path
-* `qbee_directory`: path to the directory in the qbee file manager where the file should be uploaded
-* `local_directory`: path to the local (GitHub) directory in which the file is located - default: ./
-* `run`: set to 0 if the upload action should not be performed (default 1: performing file upload)
+* `source`: path to source file
+* `destination`: path to the directory in the qbee file manager where the file should be uploaded
