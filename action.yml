@@ -1,17 +1,22 @@
-# action.yml
-name: 'update qbee file manager'
-description: 'delete old file and upload new file into the qbee file manager'
+name: 'Upload Qbee File'
+description: 'Upload a file into the qbee file manager. The file will be overwritten if it already exists'
+branding:
+  icon: upload-cloud
+  color: white
 inputs:
   filename:
     description: 'filename without path'
     required: false
+    deprecationMessage: "filename has been deprecated. Please use source instead"
   qbee_directory:
     description: 'path to directory in the qbee file manager where the file should be uploaded'
     required: false
+    deprecationMessage: "qbee_directory has been deprecated. Please use destination instead"
   local_directory:
     description: 'path to the local (GitHub) directory in which the file is located - default: ./'
     required: false
     default: './'
+    deprecationMessage: "local_directory has been deprecated. Please use source instead"
   source:
     description: 'Local path to file'
     required: false
