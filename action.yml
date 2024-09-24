@@ -1,28 +1,33 @@
-name: 'Upload Qbee File'
-description: 'Upload a file into the qbee file manager. The file will be overwritten if it already exists'
+name: Upload Qbee File
+description: Upload a file into the qbee file manager. The file will be overwritten if it already exists
 branding:
   icon: upload-cloud
   color: white
 inputs:
   filename:
-    description: 'filename without path'
+    description: filename without path
     required: false
-    deprecationMessage: "filename has been deprecated. Please use source instead"
+    deprecationMessage: filename has been deprecated. Please use source instead
   qbee_directory:
-    description: 'path to directory in the qbee file manager where the file should be uploaded'
+    description: path to directory in the qbee file manager where the file should be uploaded
     required: false
-    deprecationMessage: "qbee_directory has been deprecated. Please use destination instead"
+    deprecationMessage: qbee_directory has been deprecated. Please use destination instead
   local_directory:
     description: 'path to the local (GitHub) directory in which the file is located - default: ./'
     required: false
-    default: './'
-    deprecationMessage: "local_directory has been deprecated. Please use source instead"
+    default: ./
+    deprecationMessage: local_directory has been deprecated. Please use source instead
   source:
-    description: 'Local path to file'
+    description: Local path to file
     required: false
   destination:
-    description: 'directory in the qbee filemanager'
+    description: directory in the qbee filemanager. Must be full path with leading /
     required: false
+  action:
+    description: |
+      Type of action to perform. Currently supported values are 'upload' for single files and 'sync' for whole directory structures 
+    required: false
+    default: upload
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
