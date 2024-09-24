@@ -38,7 +38,7 @@ jobs:
       uses: qbee-io/file-upload-action@main
       with:
           source: './tar/${{ env.TARNAME }}'
-          destination: 'github_actions_upload'
+          destination: '/github_actions_upload'
 ```
 
 The usage of [qbee-io/authenticate-action](https://github.com/qbee-io/authenticate-action) is explained on its documentation page.
@@ -46,3 +46,4 @@ The usage of [qbee-io/authenticate-action](https://github.com/qbee-io/authentica
 # Input variables
 * `source`: path to source file
 * `destination`: path to the directory in the qbee file manager where the file should be uploaded
+* `action`: type of action. Supported actions are `upload` (single files) and `sync` for directories

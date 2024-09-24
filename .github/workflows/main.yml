@@ -39,3 +39,17 @@ jobs:
         with:
           source: README.md
           destination: /qbee-github-actions/upload
+      
+      - name: create test data
+        run: |
+          mkdir -p testdata/subdir
+          echo "test" > testdata/test.txt
+          echo "test" > testdata/test2.txt
+          echo "test" > testdata/subdir/test.txt
+
+      - name: test sync
+        uses: ./
+        with:
+          source: testdata
+          destination: /qbee-github-actions/sync
+          action: sync
