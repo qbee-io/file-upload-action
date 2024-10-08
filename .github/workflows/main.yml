@@ -43,9 +43,10 @@ jobs:
       - name: create test data
         run: |
           mkdir -p testdata/subdir
-          echo "test" > testdata/test.txt
-          echo "test" > testdata/test2.txt
-          echo "test" > testdata/subdir/test.txt
+          echo "$RANDOM" > testdata/test.txt
+          echo "$RANDOM" > testdata/test2.txt
+          echo "$RANDOM" > testdata/subdir/test.txt
+          echo "$RANDOM" > testdata/subdir/test3.txt
 
       - name: test sync
         uses: ./
@@ -53,3 +54,12 @@ jobs:
           source: testdata
           destination: /qbee-github-actions/sync
           action: sync
+          
+      - name: test sync with include
+        uses: ./
+        with:
+          source: testdata
+          destination: /qbee-github-actions/sync
+          action: sync
+          exclude: test2.txt,subdir
+          include: subdir/test.txt,subdir/test3.txt

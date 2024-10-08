@@ -28,6 +28,12 @@ inputs:
       Type of action to perform. Currently supported values are 'upload' for single files and 'sync' for whole directory structures 
     required: false
     default: upload
+  exclude:
+    description: Comma-separated list to exclude while action is 'sync'
+    required: false
+  include:
+    description: Comma-separated list to include while action si 'sync'
+    required: false
 runs:
   using: docker
   image: Dockerfile
