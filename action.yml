@@ -32,7 +32,7 @@ inputs:
     description: Comma-separated list to exclude while action is 'sync'
     required: false
   include:
-    description: Comma-separated list to include while action si 'sync'
+    description: Comma-separated list to include while action is 'sync'
     required: false
 runs:
   using: docker

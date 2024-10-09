@@ -47,3 +47,5 @@ The usage of [qbee-io/authenticate-action](https://github.com/qbee-io/authentica
 * `source`: path to source file
 * `destination`: path to the directory in the qbee file manager where the file should be uploaded
 * `action`: type of action. Supported actions are `upload` (single files) and `sync` for directories
+* `exclude`: Comma-separated list of patterns to exclude while action is 'sync'
+* `include`: Comma-separated list of patterns to include while action is 'sync'
